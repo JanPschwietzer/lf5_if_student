@@ -2,6 +2,11 @@ package discount;
 
 public class DiscountCalc {
     public int calc(int amount) {
-        return 0;
+
+
+        if (amount > 1000) {
+            return (int) (amount * 0.9);
+        }
+        return amount;
     }
 }
