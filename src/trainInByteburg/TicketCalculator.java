@@ -17,7 +17,7 @@ public class TicketCalculator {
 
         initialisierung(startRailwayStation, exitRailwayStation);
 
-        if(stationExistiert(startRailwayStation, exitRailwayStation) != 0) return stationExistiert(startRailwayStation, exitRailwayStation);
+        if(stationExistiert(startRailwayStation, exitRailwayStation) != 0) return -1;
 
         if(fahreRingLinie() != 0) return fahreRingLinie();
 
