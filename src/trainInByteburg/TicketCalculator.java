@@ -6,7 +6,6 @@ import java.util.List;
 
 public class TicketCalculator {
 
-    final static int ofs_char = 48;
     private int fahrtkosten = 2;
     private int startstation = 0;
     private int endstation = 0;
@@ -30,22 +29,10 @@ public class TicketCalculator {
 
     private void initialisierung(int startRailwayStation, int exitRailwayStation) {
 
-        if (startRailwayStation != 0 && exitRailwayStation != 0) {
-            linien.add((int) String.valueOf(startRailwayStation).charAt(0) - ofs_char);
-            linien.add((int) String.valueOf(exitRailwayStation).charAt(0) - ofs_char);
-            halte.add((int) String.valueOf(startRailwayStation).charAt(1) - ofs_char);
-            halte.add((int) String.valueOf(exitRailwayStation).charAt(1) - ofs_char);
-        } else if (startRailwayStation == 0) {
-            linien.add(0);
-            linien.add((int) String.valueOf(exitRailwayStation).charAt(0) - ofs_char);
-            halte.add(0);
-            halte.add((int) String.valueOf(exitRailwayStation).charAt(1) - ofs_char);
-        } else {
-            linien.add((int) String.valueOf(startRailwayStation).charAt(0) - ofs_char);
-            linien.add(0);
-            halte.add((int) String.valueOf(startRailwayStation).charAt(1) - ofs_char);
-            halte.add(0);
-        }
+        linien.add(Math.floorDiv(startRailwayStation, 10));
+        linien.add(Math.floorDiv(exitRailwayStation, 10));
+        halte.add((startRailwayStation - (linien.get(0) * 10)));
+        halte.add((exitRailwayStation - (linien.get(1)) * 10));
 
         startstation = halte.get(0);
         endstation = halte.get(1);
